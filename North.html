@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      .test_body {
+        margin: 0;
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
+        color: #111;
+        background-color: #222;
+      }
+
+      #slideshow {
+        display: flex;
+        margin: 50px auto;
+        width: 1200px;
+        height: 525px;
+      }
+
+      #slides {
+        position: relative;
+        width: 83%;
+        overflow: hidden;
+      }
+
+      #gallery {
+        position: relative;
+        width: 17%;
+        overflow: hidden;
+      }
+
+      #slides img,
+      #gallery img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: all 0.4s linear;
+      }
+
+      .slide.show {
+        opacity: 1;
+        z-index: 1000;
+      }
+
+      .thumbnail {
+        height: 105px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .next {
+        right: 0;
+      }
+
+      .prev {
+        left: 0;
+      }
+
+      .slide .content {
+        position: absolute;
+        left: 0;
+        bottom: -999px;
+        color: #fff;
+        padding: 25px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: bottom 0.4s ease;
+      }
+
+      .slide .title {
+        font-weight: bold;
+      }
+
+      .slide:hover > .content {
+        bottom: 0;
+      }
+
+      .thumbnail .title {
+        position: absolute;
+        top: 0;
+        left: -999px;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: #fff;
+        height: 30px;
+        padding: 0 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.4s ease;
+      }
+
+      .thumbnail .description {
+        position: absolute;
+        left: 0;
+        bottom: -999px;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: #fff;
+        padding: 10px 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.4s ease;
+      }
+
+      .thumbnail:hover .title {
+        left: 0;
+      }
+
+      .thumbnail:hover .description {
+        bottom: -12px;
+      }
+
+      @media screen and (max-width: 768px) {
+        #slides {
+          width: 100%;
+        }
+
+        #gallery {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="test_body">
+    <div id="slideshow">
+      <div id="slides">
+        <div class="slide show" data-slide="1">
+          <img
+            src="https://media.istockphoto.com/photos/female-farmer-working-in-the-field-picture-id644979810?b=1&k=20&m=644979810&s=170667a&w=0&h=SpZ4E1Iu7ol_i83G3gG-nuDugvAp1Avju8w8bTBA4hc="
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Haryana</span>
+
+            <p class="description">
+              Haryana is a North Indian state surrounding New Delhi on 3 sides.
+              The Yamuna River runs along its eastern border with Uttar Pradesh.
+              Shared with Punjab, the state capital Chandigarh is known for its
+              modernist buildings and gridlike street plan designed by Swiss
+              architect, Le Corbusier.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery">
+        <div class="thumbnail" data-slide="1">
+          <img
+            src="https://c4.wallpaperflare.com/wallpaper/484/985/153/jodhpur-rajasthan-india-wallpaper-preview.jpg"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Rajasthan</span>
+
+            <p class="description">
+              Rajasthan is a state in northern India. It covers 342,239 square
+              kilometres or 10.4 per cent of India's total geographical area.
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="2">
+          <img src="https://images5.alphacoders.com/593/593427.jpg" alt="" />
+
+          <div class="content">
+            <span class="title">Uttar Pradesh</span>
+
+            <p class="description">
+              Uttar Pradesh is a state in northern India. With over 200 million
+              inhabitants, it is the most populated state in India
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="3">
+          <img
+            src="https://c4.wallpaperflare.com/wallpaper/718/409/81/street-india-arch-parade-wallpaper-preview.jpg"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">NCR</span>
+
+            <p class="description">
+              The National Capital Region is a planning region centred upon the
+              National Capital Territory of Delhi in India.
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="4">
+          <img
+            src="https://media.istockphoto.com/photos/golden-temple-in-amritsar-punjab-india-picture-id535570117?b=1&k=20&m=535570117&s=170667a&w=0&h=9rgPC4OeO42sioZFAwbgLoT3Lr_jdnzykqJ8oDk_af8="
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Punjab</span>
+
+            <p class="description">
+              Punjab, a state bordering Pakistan, is the heart of India’s Sikh
+              community. The city of Amritsar, founded in the 1570s by Sikh Guru
+              Ram Das
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="5">
+          <img
+            src="https://images.unsplash.com/photo-1595815771614-ade9d652a65d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8amFtbXUlMjBhbmQlMjBrYXNobWlyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">J&K</span>
+
+            <p class="description">
+              Jammu and Kashmir is a region administered by India as a union
+              territory and consists of the southern portion
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      .test_body {
+        margin: 0;
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
+        color: #111;
+        background-color: #222;
+      }
+
+      #slideshow {
+        display: flex;
+        margin: 50px auto;
+        width: 1200px;
+        height: 525px;
+      }
+
+      #slides {
+        position: relative;
+        width: 83%;
+        overflow: hidden;
+      }
+
+      #gallery {
+        position: relative;
+        width: 17%;
+        overflow: hidden;
+      }
+
+      #slides img,
+      #gallery img {
+        height: auto;
+        max-width: 100%;
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        height: auto;
+        max-width: 100%;
+        opacity: 0;
+        transition: all 0.4s linear;
+      }
+
+      .slide.show {
+        opacity: 1;
+        z-index: 1000;
+      }
+
+      .thumbnail {
+        height: 105px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .next {
+        right: 0;
+      }
+
+      .prev {
+        left: 0;
+      }
+
+      .slide .content {
+        position: absolute;
+        left: 0;
+        bottom: -999px;
+        color: #fff;
+        padding: 25px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: bottom 0.4s ease;
+      }
+
+      .slide .title {
+        font-weight: bold;
+      }
+
+      .slide:hover > .content {
+        bottom: 0;
+      }
+
+      .thumbnail .title {
+        position: absolute;
+        top: 0;
+        left: -999px;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: #fff;
+        height: 30px;
+        padding: 0 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.4s ease;
+      }
+
+      .thumbnail .description {
+        position: absolute;
+        left: 0;
+        bottom: -999px;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: #fff;
+        padding: 10px 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.4s ease;
+      }
+
+      .thumbnail:hover .title {
+        left: 0;
+      }
+
+      .thumbnail:hover .description {
+        bottom: -12px;
+      }
+
+      @media screen and (max-width: 768px) {
+        #slides {
+          width: 100%;
+        }
+
+        #gallery {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="test_body">
+    <div id="slideshow">
+      <div id="slides">
+        <div class="slide show" data-slide="1">
+          <img src="https://wallpapercave.com/wp/wp9920427.jpg" alt="" />
+
+          <div class="content">
+            <span class="title">Tamilnadu</span>
+
+            <p class="description">
+              Tamil Nadu, a South Indian state, is famed for its Dravidian-style
+              Hindu temples. In Madurai, Meenakshi Amman Temple has high
+              ‘gopuram’ towers ornamented with colourful figures. On Pamban
+              Island, Ramanathaswamy Temple is a pilgrimage site. The town of
+              Kanyakumari, at India’s southernmost tip, is the site of ritual
+              sunrises
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery">
+        <div class="thumbnail" data-slide="1">
+          <img
+            src="https://media.istockphoto.com/photos/scenic-view-of-boats-under-a-blue-sky-in-backwaters-situated-in-town-picture-id1246366598?b=1&k=20&m=1246366598&s=612x612&w=0&h=nM31Vl8Sjxn7WOn2nAVpo5-GqH7KcLZBhlanoAGvxDQ="
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Kerala</span>
+
+            <p class="description">
+              Kerala, a state on India's tropical Malabar Coast, has nearly
+              600km of Arabian Sea shoreline.
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="2">
+          <img
+            src="https://www.traveldealsfinder.com/wp-content/uploads/AP-Tourism-Charminar.jpg"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Andhra Pradesh</span>
+
+            <p class="description">
+              Andhra Pradesh is a state in the south-eastern coastal region of
+              India. It is the seventh-largest state by area
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="3">
+          <img
+            src="https://st4.depositphotos.com/15785492/20256/i/450/depositphotos_202566798-stock-photo-golkonda-citadel-fort-southern-india.jpg"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Telangana</span>
+
+            <p class="description">
+              Telangana is a state in southern India. In the capital of
+              Hyderabad, the Charminar is a 16th-century mosque with 4 arches
+              supporting 4 towering minarets
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="4">
+          <img
+            src="https://i.pinimg.com/originals/ad/d3/dd/add3ddd95d0a3608cfd38da4014d2599.jpg"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Karnataka</span>
+
+            <p class="description">
+                Karnataka is a state in southwest India with Arabian Sea coastlines. The capital, Bengaluru (formerly Bangalore), is a high-tech hub
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="5">
+          <img
+            src="http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRvoQlWYrv43RGfG0sa7h2C0Lrpct6XnU_TsbeW0WTDrX9_Yf1PXR8rPK7q7OGAxQKv"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Visakhapatnam</span>
+
+            <p class="description">
+                Visakhapatnam is a port city and industrial center in the Indian state of Andhra Pradesh, on the Bay of Bengal
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

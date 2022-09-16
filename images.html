@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      .test_body {
+        margin: 0;
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
+        color: #111;
+        background-color: #222;
+      }
+
+      #slideshow {
+        display: flex;
+
+        width: 1200px;
+        height: 525px;
+      }
+
+      #slides {
+        position: relative;
+        width: 83%;
+        overflow: hidden;
+      }
+
+      #gallery {
+        position: relative;
+        width: 17%;
+        overflow: hidden;
+      }
+
+      #slides img,
+      #gallery img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: all 0.4s linear;
+      }
+
+      .slide.show {
+        opacity: 1;
+        z-index: 1000;
+      }
+
+      .thumbnail {
+        height: 105px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .next {
+        right: 0;
+      }
+
+      .prev {
+        left: 0;
+      }
+
+      .slide .content {
+        position: absolute;
+        left: 0;
+        bottom: -999px;
+        color: #fff;
+        padding: 25px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: bottom 0.4s ease;
+      }
+
+      .slide .title {
+        font-weight: bold;
+      }
+
+      .slide:hover > .content {
+        bottom: 0;
+      }
+
+      .thumbnail .title {
+        position: absolute;
+        top: 0;
+        left: -999px;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: #fff;
+        height: 30px;
+        padding: 0 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.4s ease;
+      }
+
+      .thumbnail .description {
+        position: absolute;
+        left: 0;
+        bottom: -999px;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: #fff;
+        padding: 10px 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.4s ease;
+      }
+
+      .thumbnail:hover .title {
+        left: 0;
+      }
+
+      .thumbnail:hover .description {
+        bottom: -12px;
+      }
+
+      @media screen and (max-width: 768px) {
+        #slides {
+          width: 100%;
+        }
+
+        #gallery {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="test_body">
+    <div id="slideshow">
+      <div id="slides">
+        <div class="slide show" data-slide="1">
+          <img
+            src="https://images.unsplash.com/photo-1571679654681-ba01b9e1e117?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d2VzdCUyMGJlbmdhbHxlbnwwfHwwfHw%3D&w=1000&q=80"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">West Bengal</span>
+
+            <p class="description">
+              West Bengal is a state in eastern India, between the Himalayas and
+              the Bay of Bengal. Its capital, Kolkata (formerly Calcutta),
+              retains architectural and cultural remnants of its past as an East
+              India Company trading post and capital of the British Raj.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery">
+        <div class="thumbnail" data-slide="1">
+          <img
+            src="https://media.istockphoto.com/photos/patratu-valley-ranchi-beautiful-place-in-jharkhand-picture-id1323460129?b=1&k=20&m=1323460129&s=170667a&w=0&h=JfpWzEX_Rba9QY934SeAhiHPbnntttCsuHn0lk3qQS0="
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Jharkhand</span>
+
+            <p class="description">
+              Jharkhand is a state in eastern India. It's known for its
+              waterfalls, the elegant Jain temples of Parasnath Hill
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="2">
+          <img
+            src="https://media.istockphoto.com/photos/one-horned-rhino-with-her-baby-at-grassland-with-sunrise-orange-sky-picture-id1324063823?b=1&k=20&m=1324063823&s=170667a&w=0&h=T894oWXhJfM_8UDnT6AmKa9RGaJ8nahGplLEmXqkdHA="
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Assam</span>
+
+            <p class="description">
+              Assam is a state in northeastern India known for its wildlife,
+              archeological sites and tea plantations.
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="3">
+          <img
+            src="https://media.istockphoto.com/photos/dzukou-valley-nagaland-north-east-india-picture-id897229558?k=20&m=897229558&s=612x612&w=0&h=HucMuWXQxYceeYfaSG3OIYEQKbO92vcraZff8xBZ0Jo="
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Nagaland</span>
+
+            <p class="description">
+              Nagaland is a mountainous state in northeast India, bordering
+              Myanmar
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="4">
+          <img
+            src="https://media.istockphoto.com/photos/the-side-view-of-the-stupa-at-mahabodhi-temple-complex-in-bodh-gaya-picture-id923634730?k=20&m=923634730&s=612x612&w=0&h=Lmz-IdtON2J4Q_sNpBGM-4d4sJp7xjsz3xCrXR4-vhs="
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Bihar</span>
+
+            <p class="description">
+              Bihar is a state in East India, bordering Nepal. It is divided by
+              the River Ganges, which floods its fertile plains
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="5">
+          <img
+            src="https://curlytales.com/wp-content/uploads/2017/02/konark-24-1170x614.jpg"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Odisha</span>
+
+            <p class="description">
+              Odisha (formerly Orissa), an eastern Indian state on the Bay of
+              Bengal, is known for its tribal cultures and its many ancient
+              Hindu temples.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

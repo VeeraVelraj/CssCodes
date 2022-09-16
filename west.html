@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      .test_body {
+        margin: 0;
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
+        color: #111;
+        background-color: #222;
+      }
+
+      #slideshow {
+        display: flex;
+        margin: 50px auto;
+        width: 1200px;
+        height: 525px;
+      }
+
+      #slides {
+        position: relative;
+        width: 83%;
+        overflow: hidden;
+      }
+
+      #gallery {
+        position: relative;
+        width: 17%;
+        overflow: hidden;
+      }
+
+      #slides img,
+      #gallery img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .slide {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: all 0.4s linear;
+      }
+
+      .slide.show {
+        opacity: 1;
+        z-index: 1000;
+      }
+
+      .thumbnail {
+        height: 105px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .next {
+        right: 0;
+      }
+
+      .prev {
+        left: 0;
+      }
+
+      .slide .content {
+        position: absolute;
+        left: 0;
+        bottom: -999px;
+        color: #fff;
+        padding: 25px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: bottom 0.4s ease;
+      }
+
+      .slide .title {
+        font-weight: bold;
+      }
+
+      .slide:hover > .content {
+        bottom: 0;
+      }
+
+      .thumbnail .title {
+        position: absolute;
+        top: 0;
+        left: -999px;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: #fff;
+        height: 30px;
+        padding: 0 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.4s ease;
+      }
+
+      .thumbnail .description {
+        position: absolute;
+        left: 0;
+        bottom: -999px;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: #fff;
+        padding: 10px 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: all 0.4s ease;
+      }
+
+      .thumbnail:hover .title {
+        left: 0;
+      }
+
+      .thumbnail:hover .description {
+        bottom: -12px;
+      }
+
+      @media screen and (max-width: 768px) {
+        #slides {
+          width: 100%;
+        }
+
+        #gallery {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="test_body">
+    <div id="slideshow">
+      <div id="slides">
+        <div class="slide show" data-slide="1">
+          <img
+            src="https://www.gujarattourism.com/content/dam/gujrattourism/images/home_page/SOU.jpg"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Gujarat</span>
+
+            <p class="description">
+                Gujarat is a state along the western coast of India. Its coastline of about 1,600 km is the longest in the country.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="gallery">
+        <div class="thumbnail" data-slide="1">
+          <img
+            src="https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bXVtYmFpfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Mumbai</span>
+
+            <p class="description">
+                Mumbai (formerly called Bombay) is a densely populated city on India’s west coast. A financial center, it's India's largest city.
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="2">
+          <img
+            src="https://cdn.pixabay.com/photo/2017/05/30/05/46/goa-2355885__340.jpg"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Goa</span>
+
+            <p class="description">
+                Goa is a state in western India with coastlines stretching along the Arabian Sea
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="3">
+          <img
+            src="https://a.travel-assets.com/findyours-php/viewfinder/images/res40/472000/472947-Utsav-Chowk.jpg"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Navi Mumbai</span>
+
+            <p class="description">
+                Navi Mumbai, is a planned city situated on the west coast of the Indian subcontinent, located in the Konkan division of Maharashtra
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="4">
+          <img
+            src="https://ak.picdn.net/shutterstock/videos/1078579571/thumb/1.jpg?ip=x480"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Thane</span>
+
+            <p class="description">
+                Thane is a city just outside Mumbai, in the western Indian state of Maharashtra. It’s known as the ‘City of Lakes’,
+            </p>
+          </div>
+        </div>
+
+        <div class="thumbnail" data-slide="5">
+          <img
+            src="https://i.pinimg.com/originals/d7/fe/f4/d7fef4f1954a984f999996ff5f9aaf45.jpg"
+            alt=""
+          />
+
+          <div class="content">
+            <span class="title">Pune</span>
+
+            <p class="description">
+                Pune is a sprawling city in the western Indian state of Maharashtra. It was once the base of the Peshwas
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>
